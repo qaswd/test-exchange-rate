@@ -1,0 +1,54 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ExchangeRate",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/ExchangeRate": {
+      "get": {
+        "tags": [
+          "ExchangeRate"
+        ],
+        "summary": "Получить курс валюты по коду и дате или список всех валют на указанную дату.",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "Код валюты (например, USD). Необязательный параметр.",
+            "schema": {
+              "type": "string",
+              "description": "Код валюты (например, USD). Необязательный параметр.",
+              "nullable": true
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "Дата курса (в формате yyyy-MM-dd). Если не указано — используется текущая дата.",
+            "schema": {
+              "type": "string",
+              "description": "Дата курса (в формате yyyy-MM-dd). Если не указано — используется текущая дата.",
+              "format": "date-time",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успешно. Возвращает данные о курсе(ах) валют.",
+            "content": {
+              "application/json": {
+                "schema": { }
+              }
+            }
+          },
+          "204": {
+            "description": "Валюта с указанным кодом не найдена."
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

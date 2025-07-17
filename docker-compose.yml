@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  currency-gateway-api:
+    image: currency-gateway-api:0.0.1
+    build:
+      context: ./ExchangeRate
+      dockerfile: ExchangeRate/Dockerfile
+    container_name: currency-gateway-api
+    ports:
+      - "4000:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    restart: unless-stopped
